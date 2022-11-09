@@ -1,0 +1,135 @@
+---
+title: "baseR_part2"
+author: "Pageneck Chikondowa"
+date: "2022-11-09"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Reading the object
+```{r}
+my_matrix <- readRDS("my_day2matrix.rds")
+print(my_matrix)
+```
+Adding row sums and means to this dataset
+```{r}
+data_matrix <- cbind(my_matrix, rowSums=rowSums(my_matrix), rowMeans=rowMeans(my_matrix))
+data_matrix
+```
+
+
+```{r}
+data_matrix2 <- rbind(data_matrix, c(colSums(my_matrix), NA, NA), c(colMeans(my_matrix),NA,NA))
+data_matrix2
+```
+
+Adding the row names to the matrix
+
+```{r}
+rownames(data_matrix2) <- (c("sample1","sample2","sample3","sample4","sample5","sample6","sample7","sample8","sample9","sample10","sample11","sample12","sample13","sample14","sample15","sample16","sample17","sample18","sample19","sample20","Sum","Mean"))
+data_matrix2
+
+```
+
+Loading the ToothGrowth dataset
+
+```{r}
+data(ToothGrowth)
+head(ToothGrowth)
+```
+
+```{r}
+# Descriptive summary statistics for the Toothbrush dataset: 
+summary(ToothGrowth)
+```
+
+```{r}
+#The average tooth length is: 
+mean(ToothGrowth$len)
+```
+
+```{r}
+print(paste("minimum teeth length: ", min(ToothGrowth$len)))
+print(paste("maximum teeth length: ", max(ToothGrowth$len)))
+
+```
+
+```{r}
+hypotenuse  <- function(side1,side2){
+  hypo <- sqrt(side1**2 + side2**2)
+  return(hypo)
+}
+```
+
+
+### functions
+```{r}
+hypotenuse(3,4)
+```
+
+### lapply() and sapply()
+
+Exercise 7 - apply
+
+part 1
+```{r}
+myvector <- c(1:10)
+```
+
+A function that squares numbers
+```{r}
+sqaure <- function(x){
+  sq <- x^2
+  return(sq)
+}
+
+```
+
+using lappy
+```{r}
+lapply(myvector, sqaure)
+
+```
+
+using sapply
+```{r}
+sapply(myvector, sqaure)
+```
+
+Part 2
+
+creating a list with 4 items
+```{r}
+my_list <- list(myvector, third,a, c(T,F,F,T))
+```
+
+
+using the lappy function
+```{r}
+lapply(my_list,sum)
+```
+using the sapply function
+
+```{r}
+sapply(my_list, sum)
+```   
+
+using the sapply
+
+definign the repeating function
+
+```{r}
+sapply(my_list,rep,each = 3)
+
+```
+
+### Loops 
+
+
+
+
+
